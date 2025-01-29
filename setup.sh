@@ -1,7 +1,7 @@
 
 
 export NAMESPACE=web-ui
-export FQDN=ki.domain.tld
+export FQDN=ds.app.bitbull.ch
 
 test -d runtime && echo ERROR remove ./runtime dir first
 test -d ./runtime && exit 1
