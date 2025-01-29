@@ -30,7 +30,10 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-        terminationMessagePath: /dev/termination-log
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cd /app/backend/data && ollama run deepseek-r1:1.5b"]
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /app/backend/data
