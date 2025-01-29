@@ -1,6 +1,7 @@
 # Open WebUI Deployment
 
-This project provides a Kubernetes deployment setup for the Open WebUI application. It includes configuration files for deploying the application, setting up persistent storage, and managing ingress rules.
+This project provides a Kubernetes deployment setup for the Open WebUI application. 
+It deploys and configures a deepseek-r1:1.5b llm for testing.
 
 ## Project Structure
 
@@ -14,26 +15,20 @@ This project provides a Kubernetes deployment setup for the Open WebUI applicati
 
 - Kubernetes cluster
 - `kubectl` command-line tool
-- Access to a container registry
+- Access to the internet
 
 ## Setup and Deployment
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
-
-2. **Configure Environment Variables**:
+1. **Configure Environment Variables**:
    Edit the `setup.sh` script to set the `NAMESPACE` and `FQDN` variables according to your environment.
 
-3. **Run the Setup Script**:
+2. **Run the Setup Script**:
    Execute the `setup.sh` script to prepare the environment and deploy the application:
    ```bash
    ./setup.sh
    ```
 
-4. **Access the Application**:
+3. **Access the Application**:
    Once deployed, the application will be accessible via the configured FQDN.
 
 ## Notes
