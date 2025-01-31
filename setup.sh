@@ -1,7 +1,7 @@
 
 
 export NAMESPACE=openweb-ui
-export FQDN=ki.domain.tld
+export FQDN=ds.domain.tld
 
 test -d runtime && echo ERROR remove ./runtime dir first
 test -d ./runtime && exit 1
