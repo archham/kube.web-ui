@@ -25,6 +25,13 @@ spec:
       containers:
       - name: open-webui
         image: ghcr.io/open-webui/open-webui:ollama
+        env:
+          - name: OPENAI_API_KEY
+            value: '__OPENAI_API_KEY__'
+          - name: USE_OLLAMA_DOCKER
+            value: "True"
+          - name: OLLAMA_MODELS
+            value: /app/backend/data/models
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -34,38 +41,13 @@ spec:
         volumeMounts:
         - mountPath: /app/backend/data
           name: open-webui
-      - name: deepseek-r1--1-5b
-        image: ghcr.io/open-webui/open-webui:ollama
-        imagePullPolicy: IfNotPresent
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
         resources:
           requests:
-            memory: "4Gi"
-            cpu: "4"
-          limits:
-            memory: "8Gi"
-            cpu: "8"
-        command: ["/bin/sh", "-c", "cd /app/backend/data && while true ; do ollama run deepseek-r1:1.5b ; sleep 1 ; done"]
-        volumeMounts:
-        - mountPath: /app/backend/data
-          name: open-webui
-      - name: qwen--0-5b
-        image: ghcr.io/open-webui/open-webui:ollama
-        imagePullPolicy: IfNotPresent
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        resources:
-          requests:
-            memory: "2Gi"
-            cpu: "2"
-          limits:
             memory: "6Gi"
             cpu: "6"
-        command: ["/bin/sh", "-c", "cd /app/backend/data && while true ; do ollama run qwen:0.5b ; sleep 1 ; done"]
-        volumeMounts:
-        - mountPath: /app/backend/data
-          name: open-webui
+          limits:
+            memory: "12Gi"
+            cpu: "12"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
